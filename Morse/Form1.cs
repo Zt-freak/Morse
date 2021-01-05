@@ -49,7 +49,7 @@ namespace Morse
             this.definitions.Add(new CharacterInfo("O", "---"));
             this.definitions.Add(new CharacterInfo("P", ".--."));
             this.definitions.Add(new CharacterInfo("Q", "--.-"));
-            this.definitions.Add(new CharacterInfo("R", "-.-"));
+            this.definitions.Add(new CharacterInfo("R", ".-."));
             this.definitions.Add(new CharacterInfo("S", "..."));
             this.definitions.Add(new CharacterInfo("T", "-"));
             this.definitions.Add(new CharacterInfo("U", "..-"));
