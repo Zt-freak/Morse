@@ -1,0 +1,10 @@
+C:\Users\bnkho\source\repos\Morse\Morse\bin\Debug\Morse.exe.config
+C:\Users\bnkho\source\repos\Morse\Morse\bin\Debug\Morse.exe
+C:\Users\bnkho\source\repos\Morse\Morse\bin\Debug\Morse.pdb
+C:\Users\bnkho\source\repos\Morse\Morse\obj\Debug\Morse.csprojAssemblyReference.cache
+C:\Users\bnkho\source\repos\Morse\Morse\obj\Debug\Morse.Form1.resources
+C:\Users\bnkho\source\repos\Morse\Morse\obj\Debug\Morse.Properties.Resources.resources
+C:\Users\bnkho\source\repos\Morse\Morse\obj\Debug\Morse.csproj.GenerateResource.cache
+C:\Users\bnkho\source\repos\Morse\Morse\obj\Debug\Morse.csproj.CoreCompileInputs.cache
+C:\Users\bnkho\source\repos\Morse\Morse\obj\Debug\Morse.exe
+C:\Users\bnkho\source\repos\Morse\Morse\obj\Debug\Morse.pdb
