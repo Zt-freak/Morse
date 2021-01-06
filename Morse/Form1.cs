@@ -5,22 +5,19 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Media;
-using System.IO;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace Morse
 {
     public partial class Form1 : Form
     {
         private DateTime sequenceTime = DateTime.Now;
-        private Timer endSequenceTimer = new Timer();
+        private System.Windows.Forms.Timer endSequenceTimer = new System.Windows.Forms.Timer();
         private string sequence = "";
         private DateTime pulseStart = DateTime.Now;
         private DateTime pulseEnd = DateTime.Now;
-        private readonly SoundPlayer beeper = new SoundPlayer(Path.Combine(Environment.CurrentDirectory, @"", "880_Sine_wave.wav"));
         private List<CharacterInfo> definitions = new List<CharacterInfo>();
         public Form1()
         {
@@ -67,7 +64,7 @@ namespace Morse
             this.definitions.Add(new CharacterInfo("7", "--..."));
             this.definitions.Add(new CharacterInfo("8", "---.."));
             this.definitions.Add(new CharacterInfo("9", "----."));
-            this.definitions.Add(new CharacterInfo("0", "-----"));
+            this.definitions.Add(new CharacterInfo("0", "-----")); ;
         }
 
         private void pulseButton_Click(object sender, EventArgs e)
@@ -78,12 +75,15 @@ namespace Morse
                 this.getCharacter();
                 this.sequence = "";
             }
-            beeper.Play();
+
+            Thread beepThread = new Thread(new ThreadStart(this.PlayBeep));
+            beepThread.IsBackground = true;
+            beepThread.Start();
         }
 
         private void pulseButton_Release(object sender, EventArgs e)
         {
-            beeper.Stop();
+            Console.Beep(880, 1);
             this.pulseEnd = DateTime.Now;
             this.sequenceTime = DateTime.Now;
             TimeSpan beepTime = this.pulseEnd - this.pulseStart;
@@ -126,6 +126,29 @@ namespace Morse
             Regex rgx = new Regex("[^A-Z0-9 -]");
             this.richTextBox1.Text = rgx.Replace(this.richTextBox1.Text, "");
         }
+
+        private void playButton_Click(object sender, EventArgs e)
+        {
+            foreach (char c in this.richTextBox1.Text)
+            {
+                CharacterInfo character = this.definitions.SingleOrDefault(a => a.character == c.ToString());
+                foreach (int time in character.timeSignatures)
+                {
+                    Console.Beep(880, time);
+                }
+                Thread.Sleep(100);
+            }
+        }
+
+        private void PlayBeep()
+        {
+            Console.Beep(880, int.MaxValue);
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            this.richTextBox1.Text = "";
+        }
     }
 
     public class CharacterInfo
@@ -142,11 +165,11 @@ namespace Morse
             {
                 if(c == '.')
                 {
-                    this.timeSignatures.Add(150);
+                    this.timeSignatures.Add(250);
                 }
                 else
                 {
-                    this.timeSignatures.Add(300);
+                    this.timeSignatures.Add(500);
                 }
             }
         }
