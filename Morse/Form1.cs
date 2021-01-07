@@ -136,7 +136,7 @@ namespace Morse
                 {
                     Console.Beep(880, time);
                 }
-                Thread.Sleep(100);
+                Thread.Sleep(200);
             }
         }
 
@@ -165,11 +165,11 @@ namespace Morse
             {
                 if(c == '.')
                 {
-                    this.timeSignatures.Add(250);
+                    this.timeSignatures.Add(200);
                 }
                 else
                 {
-                    this.timeSignatures.Add(500);
+                    this.timeSignatures.Add(400);
                 }
             }
         }

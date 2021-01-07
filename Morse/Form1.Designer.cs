@@ -81,6 +81,7 @@
             this.Controls.Add(this.playButton);
             this.Controls.Add(this.pulseButton);
             this.Controls.Add(this.richTextBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
